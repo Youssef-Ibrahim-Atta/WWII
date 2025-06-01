@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>When Shadows Ruled: A Symbolic Journey Through WWII</title>
+    <style>
+        /* CSS Reset and Base Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Times New Roman', serif;
+            color: #333;
+            overflow-x: hidden;
+            background-color: #000;
+        }
+        
+        /* Typography */
+        h1, h2, h3 {
+            font-weight: normal;
+            letter-spacing: 1px;
+        }
+        
+        /* Section Styles */
+        section {
+            min-height: 100vh;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 5% 10%;
+            transition: background-color 1.5s ease;
+        }
+        
+        /* Introduction Section */
+        #intro {
+            background-color: #000;
+            color: #fff;
+            text-align: center;
+        }
+        
+        #intro h1 {
+            font-size: 4rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s, transform 1s;
+        }
+        
+        #intro p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s, transform 1s;
+            transition-delay: 0.3s;
+        }
+        
+        #intro.active h1,
+        #intro.active p {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Radio Waves Animation */
+        .radio-waves {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 2px solid rgba(255, 0, 0, 0.3);
+            animation: ripple 3s infinite;
+            opacity: 0;
+        }
+        
+        .radio-waves:nth-child(2) {
+            animation-delay: 1s;
+        }
+        
+        .radio-waves:nth-child(3) {
+            animation-delay: 2s;
+        }
+        
+        @keyframes ripple {
+            0% {
+                transform: scale(0.1);
+                opacity: 0.5;
+            }
+            100% {
+                transform: scale(3);
+                opacity: 0;
+            }
+        }
+        
+        /* Rise of Tyranny Section */
+        #rise-of-tyranny {
+            background-color: #111;
+            color: #ccc;
+        }
+        
+        .propaganda-banner {
+            position: absolute;
+            height: 100px;
+            width: 100%;
+            background-color: #8b0000;
+            transform: rotate(-5deg) scaleX(0);
+            transform-origin: left;
+            transition: transform 1s ease-out;
+            z-index: 1;
+        }
+        
+        .propaganda-banner:nth-child(1) {
+            top: 20%;
+        }
+        
+        .propaganda-banner:nth-child(2) {
+            top: 40%;
+        }
+        
+        .propaganda-banner:nth-child(3) {
+            top: 60%;
+        }
+        
+        #rise-of-tyranny.active .propaganda-banner {
+            transform: rotate(-5deg) scaleX(1);
+        }
+        
+        /* War Spreads Section */
+        #war-spreads {
+            background-color: #1a1a1a;
+        }
+        
+        .cherry-blossom {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #ffb6c1;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+        
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+        
+        /* Resistance Section */
+        #resistance {
+            background-color: #0a0a0a;
+            color: #ddd;
+        }
+        
+        .hidden-message {
+            position: absolute;
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: 5px;
+            max-width: 300px;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+        
+        .hidden-message:nth-child(1) {
+            top: 20%;
+            left: 10%;
+        }
+        
+        .hidden-message:nth-child(2) {
+            top: 40%;
+            right: 10%;
+        }
+        
+        .hidden-message:nth-child(3) {
+            bottom: 20%;
+            left: 30%;
+        }
+        
+        #resistance.active .hidden-message {
+            opacity: 1;
+        }
+        
+        /* Reconstruction Section */
+        #reconstruction {
+            background-color: #333;
+            color: #fff;
+            transition: background-color 5s ease;
+        }
+        
+        #reconstruction.active {
+            background-color: #87CEEB;
+        }
+        
+        .dove {
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="white" d="M511.1 223.1C511.1 167 466 96 355.9 96c-30.38 0-58.5 7.125-83.88 18.88C246.5 114.1 230.6 112 214.1 112c-94.38 0-160 52.25-160 111.1c0 54.5 60.88 106.2 153.5 109.8l-39.75 39.75c-3 3-4.875 7.125-4.875 11.25c0 4.25 1.875 8.25 4.875 11.25l22.62 22.62c3 3 7 4.875 11.25 4.875c4.25 0 8.25-1.875 11.25-4.875l39.62-39.75c11.38 1.125 23 1.625 34.75 1.625c10.5 0 20.88-.625 31-1.75l-39.5 39.63c-3 3-4.875 7.125-4.875 11.25c0 4.25 1.875 8.25 4.875 11.25l22.62 22.62c3 3 7 4.875 11.25 4.875c4.25 0 8.25-1.875 11.25-4.875l39.5-39.63c42.38-3.5 83.5-18.5 115.9-42.25C490.4 318.4 511.1 274.9 511.1 223.1z"/></svg>');
+            background-size: contain;
+            opacity: 0;
+            transition: opacity 1s;
+            animation: fly 15s linear infinite;
+        }
+        
+        @keyframes fly {
+            0% {
+                transform: translateX(-100px) translateY(50px) rotate(0deg);
+            }
+            100% {
+                transform: translateX(calc(100vw + 100px)) translateY(-50px) rotate(360deg);
+            }
+        }
+        
+        #reconstruction.active .dove {
+            opacity: 0.7;
+        }
+        
+        /* Content Styling */
+        .content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: opacity 1s, transform 1s;
+        }
+        
+        section.active .content {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Propaganda Scrubber */
+        .scrubber-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            height: 400px;
+            margin: 2rem auto;
+            overflow: hidden;
+        }
+        
+        .scrubber-image {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+        }
+        
+        #scrubber-before {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400"><rect width="800" height="400" fill="%23cc0000"/><text x="400" y="200" font-family="Arial" font-size="60" fill="white" text-anchor="middle" dominant-baseline="middle">OBEY THE STATE</text></svg>');
+            z-index: 1;
+        }
+        
+        #scrubber-after {
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400"><rect width="800" height="400" fill="%230077cc"/><text x="400" y="200" font-family="Arial" font-size="60" fill="white" text-anchor="middle" dominant-baseline="middle">THINK FOR YOURSELF</text></svg>');
+            z-index: 0;
+        }
+        
+        .scrubber-mask {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 50%);
+            z-index: 2;
+            pointer-events: none;
+        }
+        
+        .scrubber-handle {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background-color: white;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 3;
+            cursor: ew-resize;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+        
+        /* Navigation */
+        .nav-dots {
+            position: fixed;
+            right: 30px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+        }
+        
+        .nav-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.5);
+            margin: 15px 0;
+            cursor: pointer;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+        
+        .nav-dot.active {
+            background-color: white;
+            transform: scale(1.3);
+        }
+        
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: #aaa;
+            text-align: center;
+            padding: 2rem;
+            font-size: 0.9rem;
+        }
+        
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            #intro h1 {
+                font-size: 2.5rem;
+            }
+            
+            #intro p {
+                font-size: 1.2rem;
+            }
+            
+            .nav-dots {
+                right: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Introduction Section -->
+    <section id="intro">
+        <div class="radio-waves"></div>
+        <div class="radio-waves"></div>
+        <div class="radio-waves"></div>
+        
+        <div class="content">
+            <h1>When Shadows Ruled</h1>
+            <p>A symbolic journey through the darkest chapter of modern history, where tyranny rose, war spread, and humanity found its defiance.</p>
+        </div>
+    </section>
+    
+    <!-- Rise of Tyranny Section -->
+    <section id="rise-of-tyranny">
+        <div class="propaganda-banner"></div>
+        <div class="propaganda-banner"></div>
+        <div class="propaganda-banner"></div>
+        
+        <div class="content">
+            <h2>The Rise of Tyranny</h2>
+            <p>Democracies crumbled as charismatic voices promised easy solutions to complex problems. Propaganda replaced truth, and fear became the currency of power.</p>
+            <p>In Germany, the Weimar Republic collapsed under economic turmoil and political extremism. Adolf Hitler's voice echoed through distorted radio waves, his words amplified by a society desperate for change.</p>
+        </div>
+    </section>
+    
+    <!-- War Spreads Section -->
+    <section id="war-spreads">
+        <div class="content">
+            <h2>The Fire Spreads</h2>
+            <p>As tyranny took root in Europe, Imperial Japan expanded its reach across Asia and the Pacific. Ancient cities faded into smoke as conquest replaced diplomacy.</p>
+            <p>The cherry blossoms of spring turned to fire as militarism twisted cultural traditions into instruments of war. Kamikaze winds carried not renewal, but destruction.</p>
+        </div>
+    </section>
+    
+    <!-- Resistance Section -->
+    <section id="resistance">
+        <div class="hidden-message">
+            <h3>Underground Press</h3>
+            <p>Secret newspapers spread truth when official channels only broadcast lies.</p>
+        </div>
+        
+        <div class="hidden-message">
+            <h3>Hidden Networks</h3>
+            <p>Ordinary people risked everything to shelter the persecuted.</p>
+        </div>
+        
+        <div class="hidden-message">
+            <h3>Silent Defiance</h3>
+            <p>Small acts of resistance chipped away at the machinery of oppression.</p>
+        </div>
+        
+        <div class="content"><br><br><br><br><br>
+            <h2>Resistance in the Shadows</h2>
+            <p>Even in the darkest times, humanity found ways to resist. From whispering saboteurs in occupied France to civilians saving lives in secret, courage flourished in silence.</p>
+            <p>Animated letters traveled through clandestine networks. Hidden radios broadcast forbidden truths. Refugee paths wound through mountains and across borders, each step a defiance of tyranny.</p>
+        </div>
+    </section>
+    
+    <!-- Propaganda Scrubber Interactive -->
+    <section id="scrubber">
+        <div class="content">
+            <h2>Uncovering Truth</h2>
+            <p>Propaganda works by simplifying complex realities into emotional appeals. Drag the handle to reveal the truth beneath the slogans.</p>
+            
+            <div class="scrubber-container">
+                <div id="scrubber-before" class="scrubber-image"></div>
+                <div id="scrubber-after" class="scrubber-image"></div>
+                <div class="scrubber-mask" id="scrubber-mask"></div>
+                <div class="scrubber-handle" id="scrubber-handle"></div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Reconstruction Section -->
+    <section id="reconstruction">
+        <div class="dove" style="top: 20%; left: 10%; animation-delay: 0s;"></div>
+        <div class="dove" style="top: 30%; left: 30%; animation-delay: 2s;"></div>
+        <div class="dove" style="top: 40%; left: 50%; animation-delay: 4s;"></div>
+        <div class="dove" style="top: 30%; left: 70%; animation-delay: 6s;"></div>
+        <div class="dove" style="top: 20%; left: 90%; animation-delay: 8s;"></div>
+        
+        <div class="content">
+            <h2>From Ashes to Hope</h2>
+            <p>As the war ended, the world faced its devastation. Bombs faded into doves. Broken swords turned into pens. The narrative shifted to reconstruction—cities rebuilding, alliances forming, and nations swearing: Never Again.</p>
+            <p>The transition from black-and-white to color symbolizes not just the end of conflict, but the return of nuance, complexity, and hope to human affairs.</p>
+        </div>
+    </section>
+    
+    <!-- Navigation Dots -->
+    <div class="nav-dots">
+        <div class="nav-dot" data-section="intro"></div>
+        <div class="nav-dot" data-section="rise-of-tyranny"></div>
+        <div class="nav-dot" data-section="war-spreads"></div>
+        <div class="nav-dot" data-section="resistance"></div>
+        <div class="nav-dot" data-section="scrubber"></div>
+        <div class="nav-dot" data-section="reconstruction"></div>
+    </div>
+    
+    <footer>
+        <p>"When Shadows Ruled" is an interactive experience designed to remember history not to glorify war, but to guard peace.</p>
+    </footer>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Intersection Observer for section activation
+            const sections = document.querySelectorAll('section');
+            const navDots = document.querySelectorAll('.nav-dot');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                        
+                        // Update navigation dots
+                        const sectionId = entry.target.id;
+                        navDots.forEach(dot => {
+                            if (dot.dataset.section === sectionId) {
+                                dot.classList.add('active');
+                            } else {
+                                dot.classList.remove('active');
+                            }
+                        });
+                    }
+                });
+            }, {
+                threshold: 0.5
+            });
+            
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+            
+            // Navigation dot click handlers
+            navDots.forEach(dot => {
+                dot.addEventListener('click', () => {
+                    const sectionId = dot.dataset.section;
+                    document.getElementById(sectionId).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // Propaganda scrubber interaction
+            const scrubberHandle = document.getElementById('scrubber-handle');
+            const scrubberMask = document.getElementById('scrubber-mask');
+            let isDragging = false;
+            
+            scrubberHandle.addEventListener('mousedown', () => {
+                isDragging = true;
+            });
+            
+            document.addEventListener('mousemove', (e) => {
+                if (!isDragging) return;
+                
+                const scrubberContainer = document.querySelector('.scrubber-container');
+                const containerRect = scrubberContainer.getBoundingClientRect();
+                let xPos = e.clientX - containerRect.left;
+                
+                // Constrain within container
+                xPos = Math.max(0, Math.min(xPos, containerRect.width));
+                
+                // Update handle position
+                scrubberHandle.style.left = `${xPos}px`;
+                
+                // Update mask gradient
+                const percentage = (xPos / containerRect.width) * 100;
+                scrubberMask.style.background = `linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) ${percentage}%, rgba(0,0,0,0) ${percentage + 10}%)`;
+            });
+            
+            document.addEventListener('mouseup', () => {
+                isDragging = false;
+            });
+            
+            // Cherry blossoms animation
+            const warSpreadsSection = document.getElementById('war-spreads');
+            
+            function createCherryBlossom() {
+                if (!warSpreadsSection.classList.contains('active')) return;
+                
+                const blossom = document.createElement('div');
+                blossom.classList.add('cherry-blossom');
+                
+                // Random position and size
+                const size = Math.random() * 15 + 5;
+                blossom.style.width = `${size}px`;
+                blossom.style.height = `${size}px`;
+                blossom.style.left = `${Math.random() * 100}%`;
+                
+                // Random animation duration
+                const duration = Math.random() * 10 + 5;
+                blossom.style.animationDuration = `${duration}s`;
+                
+                // Random delay
+                blossom.style.animationDelay = `${Math.random() * 5}s`;
+                
+                // Sometimes make the blossom turn to fire
+                if (Math.random() > 0.7) {
+                    setTimeout(() => {
+                        blossom.style.backgroundColor = '#ff4500';
+                        blossom.style.boxShadow = '0 0 10px #ff4500';
+                    }, (Math.random() * duration * 0.7) * 1000);
+                }
+                
+                warSpreadsSection.appendChild(blossom);
+                
+                // Remove after animation completes
+                setTimeout(() => {
+                    blossom.remove();
+                }, duration * 1000);
+            }
+            
+            // Create blossoms periodically when section is active
+            setInterval(() => {
+                if (warSpreadsSection.classList.contains('active')) {
+                    createCherryBlossom();
+                }
+            }, 300);
+            
+            // Initialize first section
+            document.getElementById('intro').classList.add('active');
+            navDots[0].classList.add('active');
+        });
+    </script>
+</body>
+</html>
